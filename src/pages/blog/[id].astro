@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description} pageClass="page-blog-post">
+  <main class="blog-post">
+    <article>
+      <header class="post-header">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {
+            post.data.pubDate.toLocaleDateString('ja-JP', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })
+          }
+        </time>
+        <h1>{post.data.title}</h1>
+        {
+          post.data.tags && (
+            <div class="tags">
+              {post.data.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          )
+        }
+      </header>
+      <div class="prose">
+        <Content />
+      </div>
+      <footer class="post-footer">
+        <a href={`${import.meta.env.BASE_URL}/blog/`} class="back-link">← 記事一覧へ</a>
+      </footer>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  .blog-post {
+    min-height: 100svh;
+    background: linear-gradient(160deg, #eff6ff 0%, #ffffff 50%, #f0f4ff 100%);
+    color: #4a5568;
+  }
+
+  article {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+  }
+
+  .post-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  .post-header time {
+    font-size: 0.85rem;
+    color: #94a8c8;
+  }
+
+  .post-header h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 800;
+    color: #4a5a7a;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+  }
+
+  .tag {
+    padding: 0.2rem 0.6rem;
+    background: #eff6ff;
+    border-radius: 1rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #6b8abf;
+  }
+
+  .prose {
+    line-height: 1.9;
+    color: #4a5568;
+  }
+
+  .prose :global(h2) {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #4a5a7a;
+    margin-top: 2.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .prose :global(h3) {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #5a6a8a;
+    margin-top: 2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .prose :global(p) {
+    margin-bottom: 1.2rem;
+  }
+
+  .prose :global(a) {
+    color: #6b8abf;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .prose :global(code) {
+    background: #f1f5f9;
+    padding: 0.15rem 0.4rem;
+    border-radius: 0.3rem;
+    font-size: 0.88em;
+  }
+
+  .prose :global(pre) {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose :global(pre code) {
+    background: none;
+    padding: 0;
+    font-size: 0.85rem;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .prose :global(ul) {
+    list-style: disc;
+  }
+
+  .prose :global(ol) {
+    list-style: decimal;
+  }
+
+  .prose :global(blockquote) {
+    border-left: 3px solid #cbd5e1;
+    padding-left: 1rem;
+    color: #6b7a9a;
+    margin-bottom: 1.2rem;
+  }
+
+  .post-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e2e8f0;
+  }
+
+  .back-link {
+    font-size: 0.9rem;
+    color: #6b8abf;
+    font-weight: 600;
+    transition: opacity 0.15s;
+  }
+
+  .back-link:hover {
+    opacity: 0.7;
+  }
+</style>
