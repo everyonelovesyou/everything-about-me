@@ -19,6 +19,8 @@ GitHub Pages (`https://everyonelovesyou.github.io/everything-about-me`) にデ�
 
 ### ページ構成
 
+情報設計としてのページ構成の内容は [`doc/pages.md`](./doc/pages.md) に記載あり。
+
 | ルート | ファイル |
 |---|---|
 | `/` | `src/pages/index.astro` |
