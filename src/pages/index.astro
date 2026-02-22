@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Home" pageClass="page-top">
+  <main class="top-page">
+    <div class="hero">
+      <p class="greeting">Hello, I'm</p>
+      <h1 class="name">Fuyutsuki</h1>
+      <p class="tagline">Software Engineer</p>
+      <div class="sparkles">
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+      </div>
+    </div>
+
+    <div class="links">
+      <a href={`${import.meta.env.BASE_URL}/about/`} class="link-card">
+        <span class="card-icon">♡</span>
+        <span>About</span>
+      </a>
+      <a href={`${import.meta.env.BASE_URL}/works/`} class="link-card">
+        <span class="card-icon">⚙</span>
+        <span>Works</span>
+      </a>
+      <a href={`${import.meta.env.BASE_URL}/blog/`} class="link-card">
+        <span class="card-icon">✎</span>
+        <span>Blog</span>
+      </a>
+      <a href={`${import.meta.env.BASE_URL}/contact/`} class="link-card">
+        <span class="card-icon">✉</span>
+        <span>Contact</span>
+      </a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .top-page {
+    min-height: 100svh;
+    background: linear-gradient(135deg, #fff0f6 0%, #f3e8ff 40%, #fef3c7 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 2rem;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .greeting {
+    font-size: 1.1rem;
+    color: #c084a0;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .name {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #f472b6, #c084fc, #f9a8d4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+  }
+
+  .tagline {
+    font-size: 1.05rem;
+    color: #a78baf;
+    margin-top: 0.5rem;
+    letter-spacing: 0.06em;
+  }
+
+  .sparkles {
+    margin-top: 1.2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    color: #f9a8d4;
+  }
+
+  .sparkles span:nth-child(1) {
+    animation: twinkle 2s infinite;
+  }
+  .sparkles span:nth-child(2) {
+    animation: twinkle 2s infinite 0.5s;
+  }
+  .sparkles span:nth-child(3) {
+    animation: twinkle 2s infinite 1s;
+  }
+
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.4;
+      transform: scale(0.9);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  .links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .link-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 1.5rem 1rem;
+    border-radius: 1.2rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(244, 194, 215, 0.4);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #7c6a82;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(244, 194, 215, 0.35);
+  }
+
+  .card-icon {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    .links {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+    .link-card {
+      padding: 1.2rem 0.8rem;
+    }
+  }
+</style>

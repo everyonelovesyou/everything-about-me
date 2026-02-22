@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About" description="自己紹介ページ" pageClass="page-about">
+  <main class="about-page">
+    <section class="about-hero">
+      <h1>About</h1>
+      <p class="subtitle">Nice to meet you !</p>
+    </section>
+
+    <section class="about-content">
+      <div class="profile-card">
+        <div class="avatar">✿</div>
+        <h2>Fuyutsuki</h2>
+        <p class="role">Software Engineer</p>
+      </div>
+
+      <div class="bio">
+        <h3>Profile</h3>
+        <p>
+          ここに自己紹介文を書きます。好きなこと、得意なこと、
+          どんなものを作っているかなど自由に記述してください。
+        </p>
+      </div>
+
+      <div class="skills">
+        <h3>Skills</h3>
+        <ul class="skill-list">
+          <li class="skill-tag">TypeScript</li>
+          <li class="skill-tag">React</li>
+          <li class="skill-tag">Astro</li>
+          <li class="skill-tag">Node.js</li>
+          <li class="skill-tag">CSS</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .about-page {
+    min-height: 100svh;
+    background: linear-gradient(160deg, #e0f7e9 0%, #ffffff 50%, #ffe4e1 100%);
+    color: #3d5a4c;
+  }
+
+  .about-hero {
+    padding: 6rem 2rem 3rem;
+    text-align: center;
+  }
+
+  .about-hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+    font-weight: 800;
+    color: #5aab7a;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: #88c0a0;
+    margin-top: 0.5rem;
+  }
+
+  .about-content {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .profile-card {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    border: 1.5px solid rgba(90, 171, 122, 0.2);
+  }
+
+  .avatar {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .profile-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3d6b52;
+  }
+
+  .role {
+    color: #88c0a0;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+  }
+
+  .bio h3,
+  .skills h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #5aab7a;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #d4edda;
+  }
+
+  .bio p {
+    line-height: 1.9;
+    color: #4a6b5a;
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .skill-tag {
+    padding: 0.4rem 1rem;
+    background: linear-gradient(135deg, #d4edda, #e8f5e9);
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3d6b52;
+    border: 1px solid rgba(90, 171, 122, 0.25);
+  }
+</style>

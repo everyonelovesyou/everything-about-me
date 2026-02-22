@@ -1,0 +1,42 @@
+@layer reset, base, util;
+
+@import './_reset.scss' layer(reset);
+
+@import "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@400;500&display=swap";
+
+@font-face {
+  font-family: 'Local Noto Sans JP';
+  src: local('Noto Sans JP');
+}
+
+@layer base {
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100svh;
+    line-height: 1.7;
+    font-family: 'Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+  }
+
+}
+
+@layer util {
+  .visually-hidden {
+    position: absolute !important;
+    inset: 0 !important;
+    contain: strict !important;
+    visibility: initial !important;
+    width: 4px !important;
+    height: 4px !important;
+    margin: unset !important;
+    padding: unset !important;
+    border: unset !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}

@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: unset;
+  padding: unset;
+  min-width: 0;
+  min-height: 0;
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration-line: none;
+}
+
+ul,
+ol {
+  list-style: '';
+}
