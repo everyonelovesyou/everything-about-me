@@ -2,27 +2,43 @@
 
 @import './_reset.scss' layer(reset);
 
-@import "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@400;500&display=swap";
+// @import 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap';
 
-@font-face {
-  font-family: 'Local Noto Sans JP';
-  src: local('Noto Sans JP');
-}
+// @font-face {
+//   font-family: 'Local Noto Sans JP';
+//   src: local('Noto Sans JP');
+// }
 
 @layer base {
 
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  :root {
+    overscroll-behavior: none;
+    scrollbar-gutter: stable;
   }
+
+  :root:has(:modal, :popover-open) {
+    overflow: hidden;
+  }
+
+  @media not (prefers-reduced-motion: reduce) {
+    :root:has([id], :target, :focus) {
+      scroll-behavior: smooth;
+    }
+  }
+
+  // [id],
+  // :target,
+  // :focus-within {
+  //   scroll-margin-top: var(--header-height, 0px);
+  // }
 
   body {
     min-height: 100svh;
-    line-height: 1.7;
+    line-height: 1.5;
     font-family: 'Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
-  }
 
+    // text-autospace: normal;
+  }
 }
 
 @layer util {

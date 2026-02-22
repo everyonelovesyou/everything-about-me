@@ -8,6 +8,14 @@
   min-height: 0;
 }
 
+:root {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
 img,
 picture,
 video,
@@ -17,11 +25,38 @@ svg {
 }
 
 a {
-  color: inherit;
-  text-decoration-line: none;
+  color: unset;
+  text-decoration-line: unset;
+  text-underline-position: from-font;
 }
 
 ul,
 ol {
-  list-style: '';
+  list-style-type: '';
+}
+
+button {
+  border: unset;
+  border-radius: unset;
+  color: unset;
+  background-color: unset;
+  font-style: unset;
+  font-weight: unset;
+  font-size: unset;
+  line-height: unset;
+  letter-spacing: unset;
+  text-align: unset;
+  touch-action: manipulation;
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+[popover] {
+  overscroll-behavior: contain;
+  inset: unset;
+  width: auto;
+  height: auto;
+  border: unset;
 }
