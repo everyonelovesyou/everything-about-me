@@ -6,4 +6,5 @@ export default defineConfig({
   site: 'https://everyonelovesyou.github.io',
   base: '/everything-about-me',
   trailingSlash: 'ignore',
+  server: { host: true },
 });

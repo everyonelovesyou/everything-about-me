@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="1.5 0.5 21 21">
+  <rect x="1.5" y="0.5" width="21" height="21" stroke="none" fill="none" />
+  <g stroke="none" fill="black">
+    <path d="
+      M 12,6
+      C 8,-1 0,6 3.5,11.5
+      Q 6,15 12,19
+      Q 18,15 20.5,11.5
+      C 24,6 16,-1 12,6
+      z
+    " />
+  </g>
+</svg>

@@ -16,7 +16,13 @@ const { title, description = 'ポートフォリオサイト', pageClass = '' } 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=SN+Pro:wght@200..900&family=Noto+Sans+JP:wght@400..700&display=swap"
+    />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
     <title>{title}</title>
   </head>
   <body class={pageClass}>
@@ -39,19 +45,20 @@ const { title, description = 'ポートフォリオサイト', pageClass = '' } 
   .layout {
     display: grid;
     grid-template-areas: 'center';
-    min-height: 100svh;
+    min-height: inherit;
 
     .center {
       grid-area: center;
     }
 
     .floating-nav {
-      place-self: end;
-      position: sticky;
-      margin-bottom: calc(env(safe-area-inset-bottom) + var(--_offset));
-      margin-right: var(--_offset);
-      z-index: 100;
       grid-area: center;
+      place-self: end;
+      position: fixed;
+      bottom: calc(env(safe-area-inset-bottom) + var(--_offset));
+      right: var(--_offset);
+      z-index: 100;
+      overscroll-behavior-y: contain;
     }
 
     .side--left {

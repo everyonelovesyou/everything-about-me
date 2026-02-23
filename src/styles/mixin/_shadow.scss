@@ -1,0 +1,25 @@
+@use 'sass:list';
+
+@mixin textShadow($color, $offset: 0, $blurRadius: 0) {
+  text-shadow: //
+  $offset $offset $blurRadius $color,
+  #{-1*$offset} #{-1*$offset} $blurRadius $color,
+  #{-1*$offset} $offset $blurRadius $color,
+  $offset #{-1*$offset} $blurRadius $color,
+  $offset 0 $blurRadius $color,
+  #{-1*$offset} 0 $blurRadius $color,
+  0 $offset $blurRadius $color,
+  0 #{-1*$offset} $blurRadius $color;
+}
+
+@mixin dropShadow($counts, $color, $blurRadius: 0) {
+
+  $filter: (
+  );
+
+@for $i from 1 through $counts {
+  $filter: list.append($filter, drop-shadow(0 0 $blurRadius $color));
+}
+
+filter: #{$filter};
+}

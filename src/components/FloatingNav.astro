@@ -10,7 +10,7 @@ const navItems = [
 ---
 
 <nav class="floating-nav">
-  <button id="nav-btn" class="nav-btn" popovertarget="nav-menu">✦</button>
+  <button type="button" id="nav-btn" class="nav-btn" popovertarget="nav-menu">✦</button>
   <div id="nav-menu" class="nav-menu" popover>
     <ul>
       {
@@ -46,10 +46,11 @@ const navItems = [
     &:not(:disabled) {
       color: oklch(from var(--_border-col) calc(l - 0.36) calc(c - 0.02) h);
       border: 2px solid var(--_border-col);
-      background-color: rgb(from #fff r g b / 0.9);
+      background-color: rgb(from #fff r g b / 0.8);
       box-shadow: 0 4px 16px rgb(from var(--_border-col) r g b / 0.35);
+      backdrop-filter: blur(2px);
 
-      transition-duration: 0.2s;
+      transition-duration: 0.3s;
       transition-timing-function: ease;
       transition-property: color, translate, box-shadow;
 
@@ -63,10 +64,11 @@ const navItems = [
 
   .nav-menu {
     color: oklch(from var(--_border-col) calc(l - 0.36) calc(c - 0.02) h);
-    background-color: rgb(from #fff r g b / 0.9);
+    background-color: rgb(from #fff r g b / 0.8);
     border-radius: 1rem;
     border: 1px solid var(--_border-col);
     box-shadow: 0 8px 32px rgb(from var(--_border-col) r g b / 0.25);
+    backdrop-filter: blur(2px);
     padding: 0.5rem;
     min-width: 9rem;
     bottom: calc(anchor(top) + 1rem);
@@ -76,22 +78,29 @@ const navItems = [
       bottom: calc(var(--_offset) + var(--_btn-size) + 1rem);
       right: calc(var(--_offset) + var(--_btn-size));
     }
-  }
 
-  .nav-menu a {
-    display: block;
-    padding: 0.5rem 1rem;
-    border-radius: 0.6rem;
-    font-size: 0.88rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
+    ul {
+      display: grid;
+      row-gap: 0.25rem;
 
-    &:any-link {
-      transition: background-color 0.15s ease;
+      a {
+        display: block;
+        padding: 0.5rem 1rem;
+        border-radius: 0.6rem;
+        font-size: 0.88rem;
+        font-weight: 500;
+        letter-spacing: 0.02em;
 
-      @include hover() {
-        background-color: oklch(from var(--_border-col) calc(l + 0.1) calc(c - 0.04) h);
-        color: oklch(from var(--_border-col) calc(l - 0.2) calc(c + 0.08) h);
+        &:any-link {
+          transition-duration: 0.15s;
+          transition-timing-function: ease;
+          transition-property: background-color, color;
+
+          @include hover() {
+            background-color: oklch(from var(--_border-col) calc(l + 0.1) calc(c - 0.04) h);
+            color: oklch(from var(--_border-col) calc(l - 0.2) calc(c + 0.08) h);
+          }
+        }
       }
     }
   }

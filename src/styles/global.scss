@@ -2,17 +2,14 @@
 
 @import './_reset.scss' layer(reset);
 
-// @import 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap';
-
-// @font-face {
-//   font-family: 'Local Noto Sans JP';
-//   src: local('Noto Sans JP');
-// }
+@font-face {
+  font-family: 'Local Noto Sans JP';
+  src: local('Noto Sans JP');
+}
 
 @layer base {
 
   :root {
-    overscroll-behavior: none;
     scrollbar-gutter: stable;
   }
 
@@ -33,9 +30,12 @@
   // }
 
   body {
-    min-height: 100svh;
+    min-height: 100dvh;
+    height: -webkit-fill-available;
+    overflow-x: clip;
+
     line-height: 1.5;
-    font-family: 'Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+    font-family: 'SN Pro', 'Helvetica Neue', 'Arial', 'Local Noto Sans JP', 'Noto Sans JP', sans-serif;
 
     // text-autospace: normal;
   }
@@ -54,5 +54,16 @@
     border: unset !important;
     opacity: 0 !important;
     pointer-events: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  ::before,
+  ::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
