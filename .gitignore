@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # claude
 .claude/settings.local.json
+
+# assets
+public/images/**/*.psd
+public/images/**/original/
